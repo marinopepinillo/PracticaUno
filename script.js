@@ -19,7 +19,7 @@ class Pieza{
 const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 class PiezaElectrica extends Pieza{
-        constructor(nombre, potencia, voltaje){
+    constructor(nombre, potencia, voltaje){
         super(nombre);
         this.potencia = potencia;
         this.voltaje = voltaje;
@@ -27,16 +27,35 @@ class PiezaElectrica extends Pieza{
     }
 }
 
+class PiezaMecanica extends Pieza {
+    constructor(nombre, material) {
+        super(nombre);
+        this.material = material;
+        this.codigo = this.codigo + "M";
+    }
+}
 
 
-        const listaNombres = ["Placa ABS", "Centralita Encendida", "Bornes cableado", "Alternador", "Encendido"];
-        const potencia = [1, 5, 10, 20];
-        const voltaje = [3.3, 5, 12, 240];
+class Fabrica{
+    constructor(){
+        this.contadorElectricas = 0;
+        this.contadorMecanicas = 0;
 
-        //atos de e
+        //ELECTRICAS
+        this.listaNombresElectricas = ["Placa ABS", "Centralita Encendida", "Bornes cableado", "Alternador", "Encendido"];
+        this.potencia = [1, 5, 10, 20];
+        this.voltaje = [3.3, 5, 12, 240];
 
-        //metodos
-        //constructor
+        //MECANICAS
+        this.listaNombresMecanicas = ["Larguero inferior", "Guardabarros", "Larguero superior", "Subchasis", "Puerta"];
+        this.materiales = ["Acero", "Titanio", "Carbono"];
+    }
+}
+
+
+
+
+
 
 
 
