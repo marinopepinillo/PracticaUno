@@ -36,7 +36,7 @@ class PiezaMecanica extends Pieza {
 }
 
 
-class Fabrica{
+class Factoria{
     constructor(){
         this.contadorElectricas = 0;
         this.contadorMecanicas = 0;
