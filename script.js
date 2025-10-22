@@ -1,5 +1,5 @@
 class Pieza{
-    constructor(){
+    constructor(/*nombre*/){
         this.nombre=nombre;
         this.codigo=generarNumerosCodigo();
         this.fechaFabricacion = new Date().toLocaleString();
@@ -17,7 +17,7 @@ class Pieza{
 }
 
 //esta funcion escojo un nombre aleatorio de la lista de nombre
-const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+//const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 class PiezaElectrica extends Pieza{
     constructor(nombre, potencia, voltaje){
