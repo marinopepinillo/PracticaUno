@@ -104,6 +104,60 @@ class Factoria{
     }
 }
 
+class estacionTratamiento{
+    constructor(){ 
+       //para las piezas electricas
+       this.barnizNormal = 0;
+       this.barnizEspecial = 0;
+
+       //para las piezas mecánicas
+       this.galvanizadas =0;
+       this.pulida = 0;
+       this.pintada = 0;
+    }
+
+    procesarPieza(pieza){
+        //comprobamos el tipo de pieza
+        if(piezas[i].codigo.endsWith("E")){ //si es eléctrica
+            if(pieza.potencia === 1 || pieza.potencia === 5){ //si la potencia de la pieza es 1 o 5
+                pieza.procesamiento = "Barnizada normal"; // añadimos el tipo de procesamiento
+                this.barnizNormal++; 
+            }else{
+                pieza.procesamiento = "Barnizada especial";
+                this.barnizEspecial++;
+            }
+
+        }else{ //si es mecánica
+            if(pieza.material === "Acero"){
+                pieza.procesamiento = "Galvanizada";
+                this.galvanizadas++;
+            }else if(pieza.material === "Titanio"){
+                pieza.procesamiento = "Pulida";
+                this.pulida++;
+            }else{
+                pieza.procesamiento = "Pintada";
+                this.pintada++;
+            }
+        }
+    }
+
+    /*creamos un bucle que rellene cada pieza del array de piezas de la factoria con su tratamiento que ha
+     recibido en el metodo anterior de la clase estacionTratamiento */
+    procesarPiezasFac(piezas){
+        for(let i = 0; i < piezas.length; i++){
+            this.procesarPieza(piezas[i]);
+        }
+    }
+}
+
+class Fabrica {
+    constructor(){
+        
+    }
+}
+
+
+
 
 
 
