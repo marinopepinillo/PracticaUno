@@ -3,6 +3,7 @@ class Pieza{
         this.nombre=nombre;
         this.codigo=codigo;
         this.fechaFabricacion = fechaFab;
+        this.procesamiento = null; //inicialmente no tiene procesamiento
     }
 
 
@@ -71,14 +72,14 @@ class Factoria{
         for(let i = 0; i < numeroPiezas; i++){
             //genero un numero random entre 0 y 1 que represente que si es menor que 0.3 la pieza sea eléctrica.
             const prob = Math.random();
+            //crea la fecha de fabricación
+            const fechaFab = new Date().toLocaleString();
             //Elige el tipo de pieza a generar
             if(prob < 0.3){
                 //Elige el subtipo
                 const nombreE = getRandomElement(this.listaNombresE);
                 //crea el codigo y le añade el identificador
                 const codigoE = this.generarNumerosCodigo() + "E";
-                //crea la fecha de fabricación
-                const fechaFab = new Date().toLocaleString();
                 //elige el voltaje y la potencia
                 const potencia = getRandomElement(this.potencia);
                 const voltaje = getRandomElement(this.voltaje);
@@ -91,8 +92,6 @@ class Factoria{
                 const nombreM = getRandomElement(this.listaNombresM);
                 //crea el codigo y le añade el identificador
                 const codigoM = this.generarNumerosCodigo() + "M";
-                //crea la fecha de fabricación
-                const fechaFab = new Date().toLocaleString();
                 //elige el material
                 const material = getRandomElement(this.materiales);
                 const piezaM = new PiezaMecanica(nombreM, codigoM, fechaFab, material);
@@ -111,14 +110,14 @@ class estacionTratamiento{
        this.barnizEspecial = 0;
 
        //para las piezas mecánicas
-       this.galvanizadas =0;
+       this.galvanizadas = 0;
        this.pulida = 0;
        this.pintada = 0;
     }
 
     procesarPieza(pieza){
         //comprobamos el tipo de pieza
-        if(piezas[i].codigo.endsWith("E")){ //si es eléctrica
+        if(pieza.codigo.endsWith("E")){ //si es eléctrica
             if(pieza.potencia === 1 || pieza.potencia === 5){ //si la potencia de la pieza es 1 o 5
                 pieza.procesamiento = "Barnizada normal"; // añadimos el tipo de procesamiento
                 this.barnizNormal++; 
@@ -144,6 +143,13 @@ class estacionTratamiento{
     /*creamos un bucle que rellene cada pieza del array de piezas de la factoria con su tratamiento que ha
      recibido en el metodo anterior de la clase estacionTratamiento */
     procesarPiezasFac(piezas){
+        // reset contadores
+        this.barnizNormal = 0;
+        this.barnizEspecial = 0;
+        this.galvanizadas = 0;
+        this.pulida = 0;
+        this.pintada = 0;
+        
         for(let i = 0; i < piezas.length; i++){
             this.procesarPieza(piezas[i]);
         }
@@ -152,9 +158,39 @@ class estacionTratamiento{
 
 class Fabrica {
     constructor(){
+        this.factoria = new Factoria();
+        this.estacion= new estacionTratamiento();
         
     }
+    fabricar(numeroPiezas){
+        const piezas = this.factoria.generarTipoPieza(numeroPiezas);
+        this.estacion.procesarPiezasFac(piezas);
+        return {
+            total: piezas.length,
+            electricas: this.factoria.contadorE,
+            mecanicas: this.factoria.contadorM,
+            barnizNormal: this.estacion.barnizNormal,
+            barnizEspecial: this.estacion.barnizEspecial,
+            galvanizadas: this.estacion.galvanizadas,
+            pintada: this.estacion.pintada,
+            pulida: this.estacion.pulida,
+            piezas
+        };
+    }
 }
+
+const fabrica = new Fabrica();
+const resultado = fabrica.fabricar(numeroPiezas);
+
+// Añadimos los event listeners a los botones
+document.getElementById("resultado").addEventListener("click", () => {
+    this.numeroPiezas = 100;
+    const reusltado=fabrica.fabricar(100);
+});
+document.getElementById("resultado").addEventListener("click", () => {
+    this.numeroPiezas = 1000;
+    fabrica.fabricar(1000);
+});
 
 
 
