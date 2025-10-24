@@ -63,7 +63,7 @@ class Factoria{
 
     //método para elegir si la pieza va a ser eléctrica o mecánica
     //el promedio al generar 100 piezas no será siempre 30 piezasE y 70 piezasM, pero se acercará bastante
-    generarTipoPieza(numeroPiezas){
+    generarPieza(numeroPiezas){
         const piezas = [];
         this.contadorE = 0;
         this.contadorM = 0;
@@ -182,9 +182,9 @@ class Fabrica {
 const fabrica = new Fabrica(); //creamos la fábrica
 
 //creamos los botones
-const button100 = document.getElementById("btn100"); 
-const button1000 = document.getElementById("btn1000");
-const divResultados = document.getElementById("resultados"); //utilizamos el comando div para mostrar los resultados
+const button100 = document.getElementById("button100"); 
+const button1000 = document.getElementById("button1000");
+const divResultados = document.getElementById("resultado"); //utilizamos el comando div para mostrar los resultados
 
 function mostrarResultados(resultado){
     let html = " "; //inicializamos la variable html
@@ -195,20 +195,22 @@ function mostrarResultados(resultado){
     html += "<p>Total de piezas con barniz normal " + barnizNormal+  "</p>";
     html += "<p>Total de piezas con barniz especial " + barnizEspecial + "</p>";
     html += "<p>Total de piezas galvanizadas " + galvanizadas + "</p>";
-
     html += "<p>Total de piezas pintadas " + pintada + "</p>";
     html += "<p>Total de piezas pulidas " + pulida + "</p>";
-    divResultados.innerHTML = html; //mostramos los resultados en el div
+    divResultados.innerHTML = html; //mostramos los resultados 
 }
+if(button100){
 button100.addEventListener("click", function() {
     const resultado = fabrica.fabricar(100);
     mostrarResultados(resultado);
 });
+}
+if(button1000){
 button1000.addEventListener("click", function() {
     const resultado = fabrica.fabricar(1000);
     mostrarResultados(resultado);
 });
-
+}
 
 
 
