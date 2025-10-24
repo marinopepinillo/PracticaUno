@@ -179,18 +179,38 @@ class Fabrica {
     }
 }
 
-const fabrica = new Fabrica();
-const resultado = fabrica.fabricar(numeroPiezas);
+const fabrica = new Fabrica(); //creamos la fábrica
 
-// Añadimos los event listeners a los botones
-document.getElementById("resultado").addEventListener("click", () => {
-    this.numeroPiezas = 100;
-    const reusltado=fabrica.fabricar(100);
+//creamos los botones
+const button100 = document.getElementById("btn100"); 
+const button1000 = document.getElementById("btn1000");
+const divResultados = document.getElementById("resultados"); //utilizamos el comando div para mostrar los resultados
+
+function mostrarResultados(resultado){
+    let html = " "; //inicializamos la variable html
+    html += `<h2>Resultados de la fabricación</h2>`;
+    html += "<p>Total de piezas fabricadas:" + resultado + "</p>";
+    html += "<p>Total de piezas eléctricas:" + contadorE + "</p>";
+    html += "<p>Total de piezas mecánicas:" + contadorM + "</p>";
+    html += "<p>Total de piezas con barniz normal " + barnizNormal+  "</p>";
+    html += "<p>Total de piezas con barniz especial " + barnizEspecial + "</p>";
+    html += "<p>Total de piezas galvanizadas " + galvanizadas + "</p>";
+
+    html += "<p>Total de piezas pintadas " + pintada + "</p>";
+    html += "<p>Total de piezas pulidas " + pulida + "</p>";
+    divResultados.innerHTML = html; //mostramos los resultados en el div
+}
+button100.addEventListener("click", function() {
+    const resultado = fabrica.fabricar(100);
+    mostrarResultados(resultado);
 });
-document.getElementById("resultado").addEventListener("click", () => {
-    this.numeroPiezas = 1000;
-    fabrica.fabricar(1000);
+button1000.addEventListener("click", function() {
+    const resultado = fabrica.fabricar(1000);
+    mostrarResultados(resultado);
 });
+
+
+
 
 
 
