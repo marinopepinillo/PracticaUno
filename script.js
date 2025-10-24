@@ -163,7 +163,7 @@ class Fabrica {
         
     }
     fabricar(numeroPiezas){
-        const piezas = this.factoria.generarTipoPieza(numeroPiezas);
+        const piezas = this.factoria.generarPieza(numeroPiezas);
         this.estacion.procesarPiezasFac(piezas);
         return {
             total: piezas.length,
@@ -188,15 +188,15 @@ const divResultados = document.getElementById("resultado"); //utilizamos el coma
 
 function mostrarResultados(resultado){
     let html = " "; //inicializamos la variable html
-    html += `<h2>Resultados de la fabricación</h2>`;
-    html += "<p>Total de piezas fabricadas:" + resultado + "</p>";
-    html += "<p>Total de piezas eléctricas:" + contadorE + "</p>";
-    html += "<p>Total de piezas mecánicas:" + contadorM + "</p>";
-    html += "<p>Total de piezas con barniz normal " + barnizNormal+  "</p>";
-    html += "<p>Total de piezas con barniz especial " + barnizEspecial + "</p>";
-    html += "<p>Total de piezas galvanizadas " + galvanizadas + "</p>";
-    html += "<p>Total de piezas pintadas " + pintada + "</p>";
-    html += "<p>Total de piezas pulidas " + pulida + "</p>";
+    html += "<h2>Resultados de la fabricación</h2>";
+    html += "<p>Total de piezas fabricadas:" + resultado.total + "</p>";
+    html += "<p>Total de piezas eléctricas:" + resultado.electricas + "</p>";
+    html += "<p>Total de piezas mecánicas:" + resultado.mecanicas + "</p>";
+    html += "<p>Total de piezas con barniz normal " + resultado.barnizNormal+  "</p>";
+    html += "<p>Total de piezas con barniz especial " + resultado.barnizEspecial + "</p>";
+    html += "<p>Total de piezas galvanizadas " + resultado.galvanizadas + "</p>";
+    html += "<p>Total de piezas pintadas " + resultado.pintada + "</p>";
+    html += "<p>Total de piezas pulidas " + resultado.pulida + "</p>";
     divResultados.innerHTML = html; //mostramos los resultados 
 }
 if(button100){
