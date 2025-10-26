@@ -5,14 +5,10 @@ class Pieza{
         this.fechaFabricacion = fechaFab;
         this.procesamiento = null; //inicialmente no tiene procesamiento
     }
-
-
 }
-
 
 //esta funcion selecciona un elemento aleatorio de un array
 const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
-
 
 //creamos las subclases de Pieza y les hacemos los métodos constructores
 class PiezaElectrica extends Pieza{
@@ -23,7 +19,6 @@ class PiezaElectrica extends Pieza{
     }
 }
 
-
 class PiezaMecanica extends Pieza {
     constructor(nombre, codigo, fechaFab, material) {
         super(nombre, codigo, fechaFab);
@@ -31,27 +26,21 @@ class PiezaMecanica extends Pieza {
     }
 }
 
-
-
-
 class Factoria{
     constructor(){
         this.contadorE = 0;
         this.contadorM = 0;
-
-
+        
         //ELECTRICAS
         this.listaNombresE = ["Placa ABS", "Centralita Encendida", "Bornes cableado", "Alternador", "Encendido"];
         this.potencia = [1, 5, 10, 20];
         this.voltaje = [3.3, 5, 12, 240];
-
-
         //MECANICAS
         this.listaNombresM = ["Larguero inferior", "Guardabarros", "Larguero superior", "Subchasis", "Puerta"];
         this.materiales = ["Acero", "Titanio", "Carbono"];
     }
-
-
+    
+    //esta funcion genera uno por uno los números que forman el código de cada piezas.
     generarNumerosCodigo(){
         let numeros = "";
         for (let i = 0; i < 10; i++) {
@@ -60,14 +49,12 @@ class Factoria{
         return numeros;
     }
 
-
     //método para elegir si la pieza va a ser eléctrica o mecánica
     //el promedio al generar 100 piezas no será siempre 30 piezasE y 70 piezasM, pero se acercará bastante
     generarPieza(numeroPiezas){
         const piezas = [];
         this.contadorE = 0;
         this.contadorM = 0;
-
 
         for(let i = 0; i < numeroPiezas; i++){
             //genero un numero random entre 0 y 1 que represente que si es menor que 0.3 la pieza sea eléctrica.
@@ -125,7 +112,6 @@ class estacionTratamiento{
                 pieza.procesamiento = "Barnizada especial";
                 this.barnizEspecial++;
             }
-
         }else{ //si es mecánica
             if(pieza.material === "Acero"){
                 pieza.procesamiento = "Galvanizada";
@@ -157,14 +143,16 @@ class estacionTratamiento{
 }
 
 class Fabrica {
+    //método constructor de la clase fábrica
     constructor(){
         this.factoria = new Factoria();
         this.estacion= new estacionTratamiento();
-        
     }
+    //método que ya crea las piezas con todos los atributos incluidos.
     fabricar(numeroPiezas){
         const piezas = this.factoria.generarPieza(numeroPiezas);
         this.estacion.procesarPiezasFac(piezas);
+        //devuelve el numero de piezas que se han creado de cada distinta etapa 
         return {
             total: piezas.length,
             electricas: this.factoria.contadorE,
@@ -200,29 +188,14 @@ function mostrarResultados(resultado){
     divResultados.innerHTML = html; //mostramos los resultados 
 }
 if(button100){
-button100.addEventListener("click", function() {
-    const resultado = fabrica.fabricar(100);
-    mostrarResultados(resultado);
-});
+    button100.addEventListener("click", function() {
+        const resultado = fabrica.fabricar(100);
+        mostrarResultados(resultado);
+    });
 }
 if(button1000){
-button1000.addEventListener("click", function() {
-    const resultado = fabrica.fabricar(1000);
-    mostrarResultados(resultado);
-});
+    button1000.addEventListener("click", function() {
+        const resultado = fabrica.fabricar(1000);
+        mostrarResultados(resultado);
+    });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
