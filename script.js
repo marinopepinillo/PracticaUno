@@ -189,9 +189,9 @@ const divResultados = document.getElementById("resultado"); //utilizamos el coma
 function mostrarResultados(resultado){
     let html = " "; //inicializamos la variable html
     html += "<h2>Resultados de la fabricación</h2>";
-    html += "<p>Total de piezas fabricadas:" + resultado.total + "</p>";
-    html += "<p>Total de piezas eléctricas:" + resultado.electricas + "</p>";
-    html += "<p>Total de piezas mecánicas:" + resultado.mecanicas + "</p>";
+    html += "<p>Total de piezas fabricadas: " + resultado.total + "</p>";
+    html += "<p>Total de piezas eléctricas: " + resultado.electricas + "</p>";
+    html += "<p>Total de piezas mecánicas: " + resultado.mecanicas + "</p>";
     html += "<p>Total de piezas con barniz normal: " + resultado.barnizNormal+  "</p>";
     html += "<p>Total de piezas con barniz especial: " + resultado.barnizEspecial + "</p>";
     html += "<p>Total de piezas galvanizadas: " + resultado.galvanizadas + "</p>";
