@@ -192,11 +192,11 @@ function mostrarResultados(resultado){
     html += "<p>Total de piezas fabricadas:" + resultado.total + "</p>";
     html += "<p>Total de piezas eléctricas:" + resultado.electricas + "</p>";
     html += "<p>Total de piezas mecánicas:" + resultado.mecanicas + "</p>";
-    html += "<p>Total de piezas con barniz normal " + resultado.barnizNormal+  "</p>";
-    html += "<p>Total de piezas con barniz especial " + resultado.barnizEspecial + "</p>";
-    html += "<p>Total de piezas galvanizadas " + resultado.galvanizadas + "</p>";
-    html += "<p>Total de piezas pintadas " + resultado.pintada + "</p>";
-    html += "<p>Total de piezas pulidas " + resultado.pulida + "</p>";
+    html += "<p>Total de piezas con barniz normal: " + resultado.barnizNormal+  "</p>";
+    html += "<p>Total de piezas con barniz especial: " + resultado.barnizEspecial + "</p>";
+    html += "<p>Total de piezas galvanizadas: " + resultado.galvanizadas + "</p>";
+    html += "<p>Total de piezas pintadas: " + resultado.pintada + "</p>";
+    html += "<p>Total de piezas pulidas: " + resultado.pulida + "</p>";
     divResultados.innerHTML = html; //mostramos los resultados 
 }
 if(button100){
