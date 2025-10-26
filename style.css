@@ -21,7 +21,8 @@
     font-size: 1.2rem;
     margin-bottom: 1.5em;
     }
-    
+
+   /*Estilo del botón y como aparece */
     button {  
       border: none;
       color: white;
@@ -34,30 +35,41 @@
       cursor: pointer;
       border-radius: 8px;
       background: linear-gradient(145deg, #3a3a3a, #1f1f1f);
-        box-shadow:  0 4px 10px rgba(255, 105, 180, 0.2);
-        transition: all 0.3s ease-in-out;
+      box-shadow:  0 4px 10px rgba(255, 105, 180, 0.2);
+      transition: all 0.3s ease-in-out;
     }
 
+   /*Para que el botón adapte una "animación" al posar el ratón sobre él*/
     button:hover {
-    background: linear-gradient(145deg, #ff5c8d, #c2185b);
-    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.6);
-    transform: scale(1.05);
+       background: linear-gradient(145deg, #ff5c8d, #c2185b);
+       box-shadow: 0 4px 20px rgba(255, 105, 180, 0.6);
+       transform: scale(1.05);
     }
+
+/*Estilo y como aparecen los resultados*/
     #resultado {
-    margin-top: 2em;
-    font-size: 1.1rem;
-    color: #ffdce5;
-    border-top: 1px solid rgba(255, 192, 203, 0.3);
-    padding-top: 1em;
-    animation: fadeIn 1s ease-in;
+       margin-top: 2em;
+       font-size: 1.1rem;
+       color: #ffdce5;
+       border-top: 1px solid rgba(255, 192, 203, 0.3);
+       padding-top: 1em;
+       animation: fadeIn 1s ease-in;
     }
+
+   /*botón de creación de 100 piezas*/
     .button1{
       background-color: #04AA6D; 
     }
+   /*botón de creación de 1000 piezas*/
      .button2{
       background-color: #008cba; 
     }
+
+/*crea una animación que hace que aparezca (lo usamos en los resultados)*/
     @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+      from {
+         opacity: 0; transform: translateY(10px);
+      }to { 
+         opacity: 1; transform: translateY(0);
+      }
+   }
