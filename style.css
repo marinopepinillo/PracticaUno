@@ -1,6 +1,6 @@
    body{
       font-family: "Poppins", sans-serif;
-      background-color: radial-gradient(circle at top left, #2c2c2c, #0d0d0d);
+      background: radial-gradient(circle at top left, #2c2c2c, #0d0d0d);
       color:#f8f8f8;
       text-align: center;
       margin: 2em;
@@ -32,8 +32,8 @@
       font-size: 1rem;
       margin: 6px 4px;
       cursor: pointer;
-        border-radius: 8px;
-      background-color: linear-gradient(145deg, #3a3a3a, #1f1f1f);
+      border-radius: 8px;
+      background: linear-gradient(145deg, #3a3a3a, #1f1f1f);
         box-shadow:  0 4px 10px rgba(255, 105, 180, 0.2);
         transition: all 0.3s ease-in-out;
     }
